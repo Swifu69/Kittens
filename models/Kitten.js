@@ -1,7 +1,12 @@
-const mongoDb = require('mongoose')
+const mongoDb = require("mongoose");
 
-const kittenSchema = new mongoDb.Schema({ Name: {type: String}, URL: {type: String},Desc:{type: String}, Dato: {type: String} })
+const kittenSchema = new mongoDb.Schema({
+  Name: { type: String },
+  URL: { type: String },
+  Desc: { type: String },
+  Dato: { type: String },
+});
 
-const Kitten = mongoDb.model('Kitten', kittenSchema)
+const Kitten = mongoDb.model("Kitten", kittenSchema);
 
-module.exports = Kitten
+module.exports = Kitten;

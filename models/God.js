@@ -1,8 +1,10 @@
-const mongoDb = require('mongoose')
+const mongoDb = require("mongoose");
 
-const GodSchema = new mongoDb.Schema({ Email: { type : String, required: true}, Password: { type: String, required: true , isGod: true}})
+const GodSchema = new mongoDb.Schema({
+  Email: { type: String, required: true },
+  Password: { type: String, required: true, isGod: true },
+});
 
+const God = mongoDb.model("God", GodSchema);
 
-const God = mongoDb.model('God', GodSchema)
-
-module.exports = God
+module.exports = God;

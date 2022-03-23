@@ -16,13 +16,13 @@ const passConf = (passport) => {
           
           let user = list.find((user) => user.Email == email);
           if (user) {
-            if (user.Password === password) return done(null, user);
-            else return done(null, false, { message: "No user found" })
-            // bcrypt.compare(password, user.Password, (err, match) => {
-            //   if (err) throw err;
-            //   if (match) return done(null, user);
-            //   else return done(null, false, { message: "Incorrect Password" });
-            // });
+            // if (user.Password === password) return done(null, user);
+            // else return done(null, false, { message: "No user found" })
+            bcrypt.compare(password, user.Password, (err, match) => {
+              if (err) throw err;
+              if (match) return done(null, user);
+              else return done(null, false, { message: "Incorrect Password" });
+            });
           } else {
             return done(null, false, { message: "User not found" });
           }
