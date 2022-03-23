@@ -1,7 +1,6 @@
 const PasslocStrat = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
-const God = require("../models/God");
 
 const passConf = (passport) => {
 	passport.use(
@@ -9,15 +8,9 @@ const passConf = (passport) => {
 			{ usernameField: "email" },
 			async (email, password, done) => {
 				try {
-					let users = User.findOne({ Email: email });
-					let gods = God.findOne({ Email: email });
+					let user = await User.findOne({ Email: email });
 
-					let list = await Promise.all([users, gods]);
-
-					let user = list.find((user) => user.Email == email);
 					if (user) {
-						// if (user.Password === password) return done(null, user);
-						// else return done(null, false, { message: "No user found" })
 						bcrypt.compare(password, user.Password, (err, match) => {
 							if (err) throw err;
 							if (match) return done(null, user);
@@ -41,11 +34,7 @@ const passConf = (passport) => {
 	passport.deserializeUser(async (id, done) => {
 		try {
 			const user = await User.findById(id);
-			const god = await God.findById(id);
 
-			const result = user || god;
-
-			console.log(result);
 			done(null, user);
 		} catch (err) {
 			done(err, null);

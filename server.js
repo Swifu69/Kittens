@@ -12,7 +12,7 @@ const app = express();
 passConf(passport);
 
 mongodb
-	.connect("mongodb://0.0.0.0:27017/kittens", {
+	.connect("mongodb://10.12.8.65:27017/kittens", {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	})

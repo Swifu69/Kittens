@@ -22,7 +22,7 @@ router.post("/sign", async (req, res) => {
 		user.Salt = salt;
 		user.Password = await bcrypt.hash(body.Password, salt);
 		await user.save();
-		res.redirect("/sign");
+		res.redirect("/login");
 	} catch (err) {
 		res.status(500).json(err);
 		console.log(err);

@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "nodemon server.js",
+		"dev": "mongod --config config/mongod.yaml & nodemon server.js",
 		"fmt": "prettier -w --use-tabs ."
 	},
 	"keywords": [],
