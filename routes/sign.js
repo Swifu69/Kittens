@@ -19,7 +19,8 @@ router.post("/sign", async(req, res) => {
   // generate salt to hash password
   const salt = await bcrypt.genSalt(10);
   // now we set user password to hashed password
-  user.Password = await bcrypt.hash(user.password, salt);
+  user.Salt = salt;
+  user.Password = await bcrypt.hash(body.Password, salt);
   await user.save();
   res.redirect("/sign");
 }catch(err){
