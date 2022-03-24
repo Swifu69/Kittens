@@ -1,19 +1,54 @@
 body {
-	margin: 0;
-	padding: 0;
-	font-family: sans-serif;
-	background: linear-gradient(#141e30, #243b55);
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: linear-gradient(#141e30, #243b55);
 }
 
 .card {
-	background: rgba(0, 0, 0, 0.5);
-	color: white;
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  min-height: 700px;
+  margin-bottom: 15px;
 }
 
-.row {
-	align-items: center;
+.text-muted {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  width: 100%;
 }
 
 img {
-	max-width: 100%;
+  max-height: 500px;
+}
+
+.btn-info {
+  color: black !important;
+  margin: 10px;
+}
+
+.errMsg {
+  color: white;
+  padding: 11px;
+  text-align: center;
+  background: linear-gradient(to right, #0dcaf0, #1860db);
+  border-radius: 30px;
+  margin-bottom: 2%;
+}
+
+.formErr {
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
+  border-radius: 50px;
+  background: linear-gradient(to right, #0dcaf0, #1860db);
+  margin-bottom: 2%;
+}
+
+.catSvg {
+  width: 4rem;
+  filter: invert(34%) sepia(97%) saturate(991%) hue-rotate(196deg) brightness(90%) contrast(94%);
+  margin-right: 2rem;
 }
