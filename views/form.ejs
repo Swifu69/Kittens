@@ -20,6 +20,7 @@
   <body>
     <%-include("./partials/navbar.ejs")%> 
 
+    <% if(typeof user != 'undefined') { %>
     <div class="formErr container">
       <%if(typeof errors != "undefined"){%>
       <%errors.forEach((error)=>{%> 
@@ -49,6 +50,9 @@
           <span></span>
           Submit
         </button>
+        <% }else{ %>
+            Du er ikke logget inn
+          <% }%>
       </form>
     </div>
   </body>

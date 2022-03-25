@@ -6,6 +6,8 @@ const passport = require("passport");
 const path = require("path");
 
 const passConf = require("./config/passport.js");
+const isLoggedIn = require("./controllers/loggedCheck.js");
+const logoutUsr = require("./controllers/logout")
 
 const app = express();
 
@@ -41,15 +43,28 @@ app.use((req, res, next) => {
 
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => {
+app.get('/form', isLoggedIn, (req, res) => {
+    res.render('form', {
+        user: req.User, isLoggedIn:req.isAuthenticated()
+    });
+});
+
+app.get("/logout",(req,res)=>{
+    req.logout();
+    res.redirect("/");
+});
+
+app.get("/", (_, res) => {
 	res.render("form");
 });
+
 
 app.use("/", require("./routes/kittens.js"));
 app.use("/", require("./routes/auth.js"));
 app.use("/", require("./routes/sign.js"));
 
-app.use((req, res) => {
+
+app.use((_, res) => {
 	res.render("error", { status: 404 });
 });
 

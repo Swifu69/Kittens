@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Kitten = require("../models/Kitten");
 
-const { isValidHttpUrl, validPath } = require("../controllers/validate");
+const { isValidHttpUrl, validPath} = require("../controllers/validate");
 
 router
 	.route("/table")
@@ -42,7 +42,6 @@ router
 						day: "numeric",
 					}),
 				});
-				console.log(kitten);
 				await kitten.save();
 
 				res.redirect("/table");
@@ -53,7 +52,7 @@ router
 			console.log(err);
 		}
 	})
-	.get(async (req, res) => {
+	.get(async (_, res) => {
 		try {
 			let cats = await Kitten.find();
 			res.render("table", { kittens: cats });

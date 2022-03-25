@@ -5,7 +5,7 @@ const router = Router();
 
 router
 	.route("/login")
-	.get((req, res) => {
+	.get((_, res) => {
 		res.render("login");
 	})
 	.post((req, res, next) => {

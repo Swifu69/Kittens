@@ -83,14 +83,4 @@ function isValidHttpUrl(string) { let url; try { url = new URL(string); } catch
 	</form>
 </div>
 
-
-
-
-
-
-
-<%errors.forEach((error)=>{%>
-		
-<%=	error + `<br>`%>
-
-<%})%>
+<%errors.forEach((error)=>{%> <%= error + `<br />`%> <%})%>
