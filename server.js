@@ -7,7 +7,6 @@ const path = require("path");
 
 const passConf = require("./config/passport.js");
 const isLoggedIn = require("./controllers/loggedCheck.js");
-const logoutUsr = require("./controllers/logout")
 
 const app = express();
 
@@ -58,6 +57,9 @@ app.get("/", (_, res) => {
 	res.render("form");
 });
 
+app.get("/index", (_, res)=>{
+	res.render("index")
+})
 
 app.use("/", require("./routes/kittens.js"));
 app.use("/", require("./routes/auth.js"));
