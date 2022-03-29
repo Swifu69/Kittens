@@ -37,37 +37,51 @@ app.use((req, res, next) => {
 	res.locals.user = req.user;
 	res.locals.errorMessage = req.flash("errorMessage");
 	res.locals.successMessage = req.flash("successMessage");
+	res.locals.error = req.flash("error");
+
 	next();
 });
 
 app.set("view engine", "ejs");
 
-app.get('/form', isLoggedIn, (req, res) => {
-    res.render('form', {
-        user: req.User, isLoggedIn:req.isAuthenticated()
-    });
+app.get("/form", isLoggedIn, (req, res) => {
+	res.render("form", {
+		user: req.user,
+		isLoggedIn: req.isAuthenticated(),
+	});
 });
 
-app.get("/logout",(req,res)=>{
-    req.logout();
-    res.redirect("/");
+app.get("/logout", (req, res) => {
+	req.logout();
+	res.redirect("/");
 });
 
-app.get("/", (_, res) => {
+app.get("/unauthorized", (req, res) => {
+	const status = 401;
+
+	res.status(status).render("error", {
+		msg: "You have to log in before accesing this site",
+		status
+	});
+});
+
+
+app.get("/", isLoggedIn, (req, res) => {
+	console.log(req.user);
+	console.log(req.User);
 	res.render("form");
 });
 
-app.get("/index", (_, res)=>{
-	res.render("index")
-})
+app.get("/index", (req, res) => {
+	res.render("index");
+});
 
 app.use("/", require("./routes/kittens.js"));
 app.use("/", require("./routes/auth.js"));
 app.use("/", require("./routes/sign.js"));
 
-
-app.use((_, res) => {
+app.use((req, res) => {
 	res.render("error", { status: 404 });
 });
 
-app.listen(3000, () => console.log("http://localhost:3000"));
+app.listen(4000, () => console.log("http://localhost:3000"));

@@ -17,13 +17,22 @@
     <title>Form</title>
   </head>
   <body>
-    <%-include("./partials/navbar.ejs")%> <%if(typeof errors != "undefined"){%>
-    <h1><%=errors%></h1>
+    <%-include("./partials/navbar.ejs")%> <br> <%if(typeof errors != "undefined"){%>
+    <div class="errMsg"><%=errors%></div>
     <%}%>
     <div class="login-box">
       <% if(typeof errorMessage !== 'undefined') { %>
           <div><%= errorMessage %></div>
       <% } %>
+
+      <% if(typeof error !== 'undefined') { %>
+        <div class="errMsg" ><%= error%></div>
+    <% } %> 
+
+    <% if(typeof successMessage !== 'undefined') { %>
+      <div class="sucMsg" ><%= successMessage%></div>
+  <% } %> 
+
       <h2>Login</h2>
       <form action="/login" method="POST">
         <div class="user-box">

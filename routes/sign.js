@@ -19,6 +19,7 @@ router.post("/sign", async (req, res) => {
 			user.Salt = salt;
 			user.Password = await bcrypt.hash(body.Password, salt);
 			await user.save();
+			req.flash("successMessage", "User Created Succsessfully");
 			res.redirect("/login");
 		}
 	} catch (err) {

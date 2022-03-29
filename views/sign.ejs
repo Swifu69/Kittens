@@ -12,17 +12,22 @@
     <link rel="stylesheet" href="sickForm.css" />
     <link rel="stylesheet" href="styles.css" />
     <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
 
     <title>Form</title>
   </head>
   <body>
-    <%-include("./partials/navbar.ejs")%> <%if(typeof errors != "undefined"){%>
+    <%-include("./partials/navbar.ejs")%> <br />
+    <%if(typeof errors != "undefined"){%>
     <h1><%=errors%></h1>
     <%}%>
     <div class="login-box">
       <% if(errorMessage != '') { %>
-        <div class="errMsg"><%= errorMessage %></div>
+      <div class="errMsg"><%= errorMessage %></div>
       <% } %>
       <h2>Register</h2>
       <form action="/sign" method="POST">
@@ -31,7 +36,7 @@
           <label>Email</label>
         </div>
         <div class="user-box">
-          <input type="password" name="Password" />
+          <input type="password" min="6" name="Password" />
           <label>Password</label>
         </div>
         <button type="submit">
