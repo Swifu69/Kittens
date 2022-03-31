@@ -61,10 +61,9 @@ app.get("/unauthorized", (req, res) => {
 
 	res.status(status).render("error", {
 		msg: "You have to log in before accesing this site",
-		status
+		status,
 	});
 });
-
 
 app.get("/", isLoggedIn, (req, res) => {
 	console.log(req.user);
@@ -84,4 +83,4 @@ app.use((req, res) => {
 	res.render("error", { status: 404 });
 });
 
-app.listen(4000, () => console.log("http://localhost:3000"));
+app.listen(3000, () => console.log("http://localhost:3000"));
