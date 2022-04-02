@@ -93,6 +93,6 @@ app.use((req, res) => {
 	res.render("error", { status: 404 });
 });
 
-app.listen(parseInt(config.port) ?? 3000, () =>
+app.listen(isNaN(config.port) ? 3000 : config.port, () =>
 	console.log("http://localhost:3000")
 );
