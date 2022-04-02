@@ -84,7 +84,4 @@ function isValidHttpUrl(string) { let url; try { url = new URL(string); } catch
 </div>
 
 <%errors.forEach((error)=>{%> <%= error + `<br />`%> <%})%>
-
-
-
 res.sendStatus(401).send(Du har ikke tilgang)

@@ -1,11 +1,9 @@
 const express = require("express");
 const filter = require("leo-profanity");
 const router = express.Router();
-const Kitten = require("../models/Kitten")
+const Kitten = require("../models/Kitten");
 
 const { isValidHttpUrl, validPath } = require("../controllers/validate");
-
-
 
 router
 	.route("/table")
