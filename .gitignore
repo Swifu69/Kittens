@@ -1,3 +1,4 @@
 node_modules
 mongod.log
 data
+config/config.json
