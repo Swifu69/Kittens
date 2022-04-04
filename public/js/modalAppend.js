@@ -1,84 +1,71 @@
-<div class="modal" tabindex="-1" role="dialog">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title">Modal title</h5>
-				<button
-					type="button"
-					class="close"
-					data-dismiss="modal"
-					aria-label="Close"
-				>
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
+export default (parentEl) => {
+  const modalParent = document.createElement("DIV");
+  const modalDialog = document.createElement("DIV");
+  const modalContent = document.createElement("DIV");
+  const headerFive = document.createElement("H5");
+  const closeModal = document.createElement("BUTTON");
+  const closeModalIcon = document.createElement("SPAN");
+  const modalBody = document.createElement("DIV");
+  const modalFooter = document.createElement("DIV");
+  const confirmButton = document.createElement("BUTTON");
+  const deniedButton = document.createElement("BUTTON");
+  const modalText = document.createElement("P");
 
-			<div class="modal-body">
-				<p>Modal body text goes here.</p>
-			</div>
+  modalParent.className = "modal";
 
-			<div class="modal-footer">
-				<button type="button" class="btn btn-primary">
-					Save changes
-				</button>
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">
-					Close
-				</button>
-			</div>
-		</div>
-	</div>
-</div>;
+  modalParent.setAttribute("tabindex", "-1");
 
-export const func = (parentEl, data) => {
-	const modalParent = document.createElement("DIV");
-	const modalDialog = document.createElement("DIV");
-	const modalContent = document.createElement("DIV");
-	const headerFive = document.createElement("H5");
-	const closeModal = document.createElement("BUTTON");
-	const closeModalIcon = document.createElement("SPAN");
-	const modalBody = document.createElement("DIV");
-	const modalFooter = document.createElement("DIV");
-	const confirmButton = document.createElement("BUTTON");
-	const deniedButton = document.createElement("BUTTON");
+  modalParent.setAttribute("role", "dialog");
 
-	modalParent.className = "modal";
+  modalDialog.className = "modal-dialog";
 
-	modalParent.setAttribute("tabindex", "-1");
+  modalDialog.setAttribute("role", "document");
 
-	modalParent.setAttribute("role", "dialog");
+  modalContent.className = "modal-header";
 
-	modalDialog.className = "modal-dialog";
+  headerFive.className = "modal-title";
+  headerFive.innerText = "data.title;"
 
-	modalDialog.setAttribute("role", "document");
+  closeModal.className = "close";
 
-	modalContent.className = "modal-header";
+  closeModal.setAttribute("type", "button");
+  closeModal.setAttribute("data-dismiss", "modal");
+  closeModal.setAttribute("aria-label", "Close");
 
-	headerFive.className = "modal-title";
-	headerFive.innerText = data.title;
+  closeModalIcon.setAttribute = ("aria-hidden", "true");
 
-	closeModal.className = "close";
+  closeModalIcon.innerHTML = "&times;";
 
-	closeModal.setAttribute("type", "button");
-	closeModal.setAttribute("data-dismiss", "modal");
-	closeModal.setAttribute("aria-label", "Close");
+  modalBody.className = "modal-body";
+  modalBody.innerText = "data.body;"
 
-	closeModalIcon.setAttribute = ("aria-hidden", "true");
+  modalFooter.className = "modal-footer";
 
-	closeModalIcon.innerHTML = "&times;";
+  confirmButton.className = "btn btn-primary";
+  confirmButton.setAttribute("type", "button");
+  confirmButton.innerText = "Yes";
 
-	modalBody.className = "modal-body";
-	modalBody.innerText = data.body;
+  deniedButton.className = "btn btn-secondary";
+  deniedButton.setAttribute("type", "button");
+  deniedButton.setAttribute("data-dismiss", "modal");
+  deniedButton.innerText = "NO!!!!";
 
-	modalFooter.className = "modal-footer";
+  modalText.innerText = "data for modal"
 
-	confirmButton.className = "btn btn-primary";
-	confirmButton.setAttribute("type", "button");
-	confirmButton.innerText = "Yes";
+  // modalfooter > modalbody > modaltitle > modalcontent > modaldialog > modal > return modal to func and delete cats append
 
-	deniedButton.className = "btn btn-secondary";
-	deniedButton.setAttribute("type", "button");
-	deniedButton.setAttribute("data-dismiss", "modal");
-	deniedButton.innerText = "NO!!!!";
+  //Modal Header
 
-	// modalfooter > modalbody > modaltitle > modalcontent > modaldialog > modal > return modal to func and delete cats append
+  modalContent.appendChild(headerFive)
+  modalContent.appendChild(closeModal)
+  closeModal.appendChild(closeModalIcon)
+
+  // Modal body
+
+  modalBody.appendChild(modalText)
+
+  // Modal Footer
+
+  modalFooter.appendChild(confirmButton)
+  modalFooter.appendChild(deniedButton)
 };
