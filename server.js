@@ -90,7 +90,7 @@ app.use("/", require("./routes/auth.js"));
 app.use("/", require("./routes/sign.js"));
 
 app.use((req, res) => {
-	res.render("error", { status: 404 });
+	res.render("error", { status: 404, msg: "Page not found" });
 });
 
 app.listen(isNaN(config.port) ? 3000 : config.port, () =>

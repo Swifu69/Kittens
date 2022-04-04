@@ -27,7 +27,6 @@ const passConf = (passport) => {
 	);
 
 	passport.serializeUser((user, done) => {
-		console.log("test");
 		done(null, user.id);
 	});
 
