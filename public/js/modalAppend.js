@@ -68,4 +68,7 @@ export default (parentEl) => {
 
   modalFooter.appendChild(confirmButton)
   modalFooter.appendChild(deniedButton)
+
+
+  
 };
