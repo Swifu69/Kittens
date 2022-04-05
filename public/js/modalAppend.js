@@ -1,4 +1,4 @@
-export default (parentEl) => {
+export default (data, kitten, title) => {
 	const modalParent = document.createElement("DIV");
 	const modalDialog = document.createElement("DIV");
 	const modalContent = document.createElement("DIV");
@@ -10,10 +10,12 @@ export default (parentEl) => {
 	const confirmButton = document.createElement("BUTTON");
 	const deniedButton = document.createElement("BUTTON");
 	const modalText = document.createElement("P");
+	const modalWrapper = document.createElement("DIV");
 
 	modalParent.className = "modal";
+	modalParent.setAttribute("id", "modal-dismiss");
 
-	modalParent.setAttribute("tabindex", "-1");
+	//modalParent.setAttribute("tabindex", "-1");
 
 	modalParent.setAttribute("role", "dialog");
 
@@ -24,40 +26,32 @@ export default (parentEl) => {
 	modalContent.className = "modal-header";
 
 	headerFive.className = "modal-title";
-	headerFive.innerText = "data.title;";
-
-	closeModal.className = "close";
-
-	closeModal.setAttribute("type", "button");
-	closeModal.setAttribute("data-dismiss", "modal");
-	closeModal.setAttribute("aria-label", "Close");
+	headerFive.innerText = title;
 
 	closeModalIcon.setAttribute = ("aria-hidden", "true");
 
 	closeModalIcon.innerHTML = "&times;";
 
 	modalBody.className = "modal-body";
-	modalBody.innerText = "data.body;";
+	modalBody.innerText = kitten;
 
 	modalFooter.className = "modal-footer";
 
-	confirmButton.className = "btn btn-primary";
+	confirmButton.className = "confirmButton btn btn-primary";
 	confirmButton.setAttribute("type", "button");
 	confirmButton.innerText = "Yes";
 
-	deniedButton.className = "btn btn-secondary";
+	deniedButton.className = "closeModal btn btn-secondary";
 	deniedButton.setAttribute("type", "button");
 	deniedButton.setAttribute("data-dismiss", "modal");
 	deniedButton.innerText = "NO!!!!";
 
-	modalText.innerText = "data for modal";
-
-	// modalfooter > modalbody > modaltitle > modalcontent > modaldialog > modal > return modal to func and delete cats append
+	modalText.innerText = data;
+	modalWrapper.className = "modal-content";
 
 	//Modal Header
 
 	modalContent.appendChild(headerFive);
-	modalContent.appendChild(closeModal);
 	closeModal.appendChild(closeModalIcon);
 
 	// Modal body
@@ -68,4 +62,14 @@ export default (parentEl) => {
 
 	modalFooter.appendChild(confirmButton);
 	modalFooter.appendChild(deniedButton);
+
+	modalWrapper.appendChild(modalContent);
+	modalWrapper.appendChild(modalBody);
+	modalWrapper.appendChild(modalFooter);
+
+	modalDialog.appendChild(modalWrapper);
+
+	modalParent.appendChild(modalDialog);
+
+	return modalParent;
 };

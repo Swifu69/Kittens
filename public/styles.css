@@ -64,3 +64,7 @@ img {
 		brightness(90%) contrast(94%);
 	margin-right: 2rem;
 }
+
+.modal {
+	display: block !important;
+}

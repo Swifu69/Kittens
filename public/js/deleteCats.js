@@ -4,7 +4,38 @@ const container = document.getElementsByClassName("deleteContainer")[0];
 
 container.addEventListener("click", (e) => {
 	if (e.target.classList.contains("deleteCatBtn")) {
+		const data = e.target.dataset.id;
+		const kitten = e.target.dataset.name;
+		const title = "Are you sure you want to delete this cute kitten?";
+		console.log(data);
 		console.log("Touch my belly button");
-		//renderModal(parentEl)
+		const modal = renderModal(data, kitten, title);
+		const el = document.createElement("div");
+		el.innerText = "apesalata";
+
+		container.appendChild(modal);
+
+		const closeBtn = document.getElementsByClassName("closeModal")[0];
+
+		closeBtn.addEventListener("click", (e) => {
+			container.removeChild(modal);
+		});
+
+		const confirmButton = document.getElementsByClassName("confirmButton")[0];
+
+		confirmButton.addEventListener("click", async (e) => {
+			const kittenCard = document.getElementById(data);
+			console.log("Im working!");
+			try {
+				await fetch("/delete/" + data, {
+					method: "DELETE",
+				});
+
+				container.removeChild(modal);
+				kittenCard.remove();
+			} catch (err) {
+				console.log(err);
+			}
+		});
 	}
 });

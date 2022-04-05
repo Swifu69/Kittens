@@ -90,4 +90,16 @@ router
 		}
 	});
 
+router.delete("/delete/:id", async (req, res) => {
+	const id = req.params.id;
+
+	try {
+		await Kitten.deleteOne({ _id: id });
+		res.status(202).json({ redirect: "/table" });
+	} catch (err) {
+		console.log(err);
+		res.redirect("/error");
+	}
+});
+
 module.exports = router;
