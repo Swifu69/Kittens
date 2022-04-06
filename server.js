@@ -86,6 +86,7 @@ app.get("/", (req, res) => {
 app.use("/", require("./routes/kittens.js"));
 app.use("/", require("./routes/auth.js"));
 app.use("/", require("./routes/sign.js"));
+app.use("/api", require("./routes/api.js"));
 
 app.use((req, res) => {
 	res.render("error", { status: 404, msg: "Page not found" });
