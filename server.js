@@ -53,6 +53,10 @@ app.use((req, res, next) => {
 
 app.set("view engine", "ejs");
 
+app.get("/form", isLoggedIn, (req, res) => {
+	res.render("form");
+});
+
 app.get("/form", (req, res) => {
 	res.render("form", {
 		user: req.user,
@@ -75,13 +79,7 @@ app.get("/unauthorized", (req, res) => {
 	});
 });
 
-app.get("/", isLoggedIn, (req, res) => {
-	console.log(req.user);
-	console.log(req.User);
-	res.render("form");
-});
-
-app.get("/index", (req, res) => {
+app.get("/", (req, res) => {
 	res.render("index");
 });
 
