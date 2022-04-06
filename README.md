@@ -3,24 +3,34 @@
 Kittens is a website were you can look and post different cats! It was made to honor ["Oh long johnson"](https://www.youtube.com/watch?v=kkwiQmGWK4c), a very pupular cat in the internet. It was also made
 to commemorate my cat named Figaro!.
 
-#Installation
+# Installation
 
 Install dependencies
 
 ```bash
-npm i
+$ npm i
+```
+
+Remember to add your config to `config/config.json. For example
+
+```jsonc
+{
+	"mongodb_uri": "mongodb://127.0.0.1:27017/kittens", // Required
+	"port": 3000, // Defaults to 3000
+	"secret": "a long string and very secure one as well" // Defaults to a random UUID
+}
 ```
 
 Run the website
 
-```bash
-npm run dev
+```console
+$ npm run dev
 ```
 
-#Contributors
+# Contributors
 
 I've got some help from two good programmers named [Anjani](https://github.com/anjani-ch) and [AnInternetTroll](https://github.com/aninternettroll)!
 
-#Licence
+# Licence
 
-[MIT LICENCE](https://github.com/Swifu69/Kittens/blob/master/LICENSE)
+[MIT LICENCE](./LICENSE)
