@@ -22,4 +22,4 @@ I've got some help from two good programmers named [Anjani](https://github.com/a
 
 #Licence 
 
-[MIT LICENCE]()
+[MIT LICENCE](https://github.com/Swifu69/Kittens/blob/master/LICENSE)
