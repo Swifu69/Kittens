@@ -13,7 +13,7 @@ npm i
 Run the website 
 
 ```bash
-`npm run dev
+npm run dev
 ```
 
 #Contributors
