@@ -1,7 +1,7 @@
 # Kittens
 
 Kittens is a website were you can look and post different cats! It was made to honor ["Oh long johnson"](https://www.youtube.com/watch?v=kkwiQmGWK4c), a very pupular cat in the internet. It was also made 
-to conmemorate my cat named Figaro!.
+to commemorate my cat named Figaro!.
 
 #Installation
 
