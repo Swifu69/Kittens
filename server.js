@@ -99,6 +99,7 @@ app.get("/", (req, res) => {
 app.use("/", require("./routes/kittens.js"));
 app.use("/", require("./routes/auth.js"));
 app.use("/", require("./routes/sign.js"));
+app.use("/api", require("./routes/api.js"));
 
 //render when the url has invalid sites
 app.use((req, res) => {

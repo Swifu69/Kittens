@@ -2,12 +2,14 @@ const express = require("express");
 const filter = require("leo-profanity");
 const router = express.Router();
 const Kitten = require("../models/Kitten");
+const createLocaleMiddleware = require("express-locale");
 
 const { isValidHttpUrl, validPath } = require("../controllers/validate");
+const isLoggedIn = require("../controllers/loggedCheck");
 
 router
 	.route("/table")
-	.post(async (req, res) => {
+	.post(isLoggedIn, async (req, res) => {
 		try {
 			//   const profanity = ["Nigger", "Nibba", "nigga", "nibba", "﷽", "nigger"];
 			//   const replaceProfanity = [
@@ -22,8 +24,7 @@ router
 
 			const errors = [];
 
-			const { name, url } = req.body;
-			let desc = req.body.desc;
+			let { name, url, desc } = req.body;
 
 			if (!name || !url) {
 				errors.push("Please make sure to fill both fields!!!");
@@ -64,12 +65,7 @@ router
 					Name: name,
 					URL: url,
 					Desc: desc,
-					Dato: new Date().toLocaleString("NB", {
-						weekday: "long",
-						year: "numeric",
-						month: "short",
-						day: "numeric",
-					}),
+					Owner: req.user,
 				});
 				await kitten.save();
 
@@ -81,10 +77,23 @@ router
 			console.log(err);
 		}
 	})
-	.get(async (_, res) => {
+	.get(createLocaleMiddleware(), async (req, res) => {
 		try {
 			let cats = await Kitten.find();
-			res.render("table", { kittens: cats });
+			// TODO(aninternettroll): Handle no cats a bit better
+			if (!cats.length)
+				return res.render("error", { status: 404, msg: "No cats found" });
+			res.render("table", {
+				kittens: cats.map((cat) => ({
+					...cat.toJSON(),
+					Date: Intl.DateTimeFormat(req.locale.toString(), {
+						weekday: "long",
+						year: "numeric",
+						month: "short",
+						day: "numeric",
+					}).format(cat.Date),
+				})),
+			});
 		} catch (err) {
 			console.log(err);
 		}

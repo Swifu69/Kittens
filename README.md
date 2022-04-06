@@ -8,16 +8,8 @@ to commemorate my cat named Figaro!.
 Install dependencies
 
 ```bash
-npm i
+$ npm i
 ```
-
-Run the website
-
-```bash
-npm run dev
-```
-
-Run the website
 
 Remember to add your config to `config/config.json. For example
 
@@ -29,6 +21,8 @@ Remember to add your config to `config/config.json. For example
 }
 ```
 
+Run the website
+
 ```console
 $ npm run dev
 ```
@@ -36,7 +30,6 @@ $ npm run dev
 # Contributors
 
 I've got some help from two good programmers named [Anjani](https://github.com/anjani-ch) and [AnInternetTroll](https://github.com/aninternettroll)!
-
 
 # Licence
 
