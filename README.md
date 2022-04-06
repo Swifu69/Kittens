@@ -37,6 +37,7 @@ $ npm run dev
 
 I've got some help from two good programmers named [Anjani](https://github.com/anjani-ch) and [AnInternetTroll](https://github.com/aninternettroll)!
 
-#Licence
+
+# Licence
 
 [MIT LICENCE](./LICENSE)
