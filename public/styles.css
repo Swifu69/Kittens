@@ -68,3 +68,7 @@ img {
 .modal {
 	display: block !important;
 }
+
+.indexContainer{
+	margin-top: 6%;
+}
