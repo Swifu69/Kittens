@@ -18,7 +18,7 @@ npm run dev
 
 #Contributors
 
-I've got some help from two good programmers named [Anjani](https://github.com/anjani-ch) and [Aninternettroll](https://github.com/aninternettroll)!
+I've got some help from two good programmers named [Anjani](https://github.com/anjani-ch) and [AnInternetTroll](https://github.com/aninternettroll)!
 
 #Licence 
 
