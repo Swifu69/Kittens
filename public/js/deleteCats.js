@@ -4,7 +4,7 @@ const container = document.getElementsByClassName("deleteContainer")[0];
 
 container.addEventListener("click", (e) => {
 	if (e.target.classList.contains("deleteCatBtn")) {
-		const data = e.target.dataset.id;
+		const data = e.target.getAttribute("data-id");
 		const kitten = e.target.dataset.name;
 		const title = "Are you sure you want to delete this cute kitten?";
 		console.log(data);
@@ -25,11 +25,14 @@ container.addEventListener("click", (e) => {
 
 		confirmButton.addEventListener("click", async (e) => {
 			const kittenCard = document.getElementById(data);
-			console.log("Im working!");
+			console.log(kittenCard);
 			try {
-				await fetch("/delete/" + data, {
+			
+				const res = await fetch("/delete/" + data, {
 					method: "DELETE",
 				});
+
+				//const { redirect } = res.json()
 
 				container.removeChild(modal);
 				kittenCard.remove();

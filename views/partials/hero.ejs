@@ -19,7 +19,7 @@
 
      
       
-
+      <% if(typeof user == 'undefined') { %>
       <div class="d-grid gap-4 d-md-flex justify-content-md-start">
         <a href="/login" type="button" class="btn btn-outline-danger btn-lg px-4">
             Login
@@ -28,7 +28,7 @@
         <a href="/sign" type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">
           Register
         </a>
-        
+        <% } %>
         <a  href="/table" type="button" class="btn btn-outline-light btn-lg px-4">
           Look at cats!
         </a>

@@ -83,17 +83,24 @@ router
 			// TODO(aninternettroll): Handle no cats a bit better
 			if (!cats.length)
 				return res.render("error", { status: 404, msg: "No cats found" });
+			
+			const kittens = cats.map((cat) => ({
+				...cat.toJSON(),
+				Date: Intl.DateTimeFormat(req.locale.toString(), {
+					weekday: "long",
+					year: "numeric",
+					month: "short",
+					day: "numeric",
+				}).format(cat.Date),
+			}))
+
+			console.log(kittens)
+
 			res.render("table", {
-				kittens: cats.map((cat) => ({
-					...cat.toJSON(),
-					Date: Intl.DateTimeFormat(req.locale.toString(), {
-						weekday: "long",
-						year: "numeric",
-						month: "short",
-						day: "numeric",
-					}).format(cat.Date),
-				})),
+				kittens,
 			});
+
+			
 		} catch (err) {
 			console.log(err);
 		}
@@ -103,6 +110,7 @@ router.delete("/delete/:id", async (req, res) => {
 	const id = req.params.id;
 
 	try {
+		console.log("apesalata i buksa")
 		await Kitten.deleteOne({ _id: id });
 		res.status(202).json({ redirect: "/table" });
 	} catch (err) {

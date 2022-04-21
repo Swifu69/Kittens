@@ -20,7 +20,7 @@
     <%-include("./partials/navbar.ejs")%>
     <div class="container deleteContainer">
       <div class="row"><% kittens.forEach(kitten =>{ %>
-        <div class="col-sm-12 col-md-6 col-lg-4" id="<%=kitten.id%>">
+        <div class="col-sm-12 col-md-6 col-lg-4" id="<%=kitten.Id%>">
           <div class="card">
             <img
               class="card-img-top"
@@ -33,8 +33,8 @@
               <p class="card-text">
                 
                 <%if(typeof user !== 'undefined' && user.Role === 'admin'){%>
-                  <p><%=kitten.id%></p>
-                  <button data-id="<%=kitten.id%>" data-name="<%=kitten.Name %>" class="btn btn-danger deleteCatBtn">Delete</button>
+                  <p><%=kitten.Id%></p>
+                  <button data-id="<%=kitten.Id%>" data-name="<%=kitten.Name %>" class="btn btn-danger deleteCatBtn">Delete</button>
                   <% }%>
                 <small class="text-muted">Bildet ble lastet opp <%=kitten.Date%></small>
               </p>
